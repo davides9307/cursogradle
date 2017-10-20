@@ -1,5 +1,7 @@
 package co.ceiba.service;
 
+
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -39,7 +41,7 @@ public void notifytest() {
 	String message =notifypersonservice.notify(person);
 	
 	//Assert
-	Assert.assertNull(message);
+	Assert.assertNotNull(message);
 	System.out.println(message);
 	
 }

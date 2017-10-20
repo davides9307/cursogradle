@@ -2,33 +2,49 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: "jacoco"
 
-sourceCompatibility = 1.5
 version = '1.0'
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+
+
+
+
+
 jar {
     manifest {
-        attributes 'Implementation-Title': 'Gradle Quickstart',
+        attributes 'Implementation-Title': 'Proyecto2',
                    'Implementation-Version': version
     }
 }
+
 
 repositories {
     mavenCentral()
 }
 
+
 dependencies {
-    compile group: 'commons-collections', name: 'commons-collections', version: '3.2'
-    testCompile group: 'junit', name: 'junit', version: '4.+'
-    testCompile "org.mockito:mockito-core:1.+" 
+   
+    testCompile('junit:junit:4.12'){
+		exclude group: 'org.hamcrest'
+	}
+	testCompile 'org.hamcrest:hamcrest-library:1.3'
+    testCompile "org.mockito:mockito-core:1.+"
+    
 }
+
+
+
+
 
 test {
-    systemProperties 'property': 'value'
+    jacoco{
+    	append = false
+    	destinationFile = file("jacoco/jacocoTest.exec")
+    
+    }
+    reports.junitXml.destination = file("jacoco/test-results")
 }
 
-uploadArchives {
-    repositories {
-       flatDir {
-           dirs 'repos'
-       }
-    }
-}
+
