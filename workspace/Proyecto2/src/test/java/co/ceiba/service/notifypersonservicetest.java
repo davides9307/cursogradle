@@ -39,7 +39,7 @@ public void notifytest() {
 	String message =notifypersonservice.notify(person);
 	
 	//Assert
-	Assert.assertNotNull(message);
+	Assert.assertNull(message);
 	System.out.println(message);
 	
 }
